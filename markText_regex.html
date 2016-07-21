@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <style>
+        .markedText {
+            font-weight: bold;
+            background-color: crimson;
+            color:white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="src-text" style="width:600px;margin:10px;border:1px solid black;padding:5px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum aperiam placeat animi ipsam doloribus perspiciatis fugit earum expedita cum fugiat corporis, veniam ducimus. Quidem saepe aliquid, tenetur dolores expedita perspiciatis nostrum, maxime laudantium assumenda voluptas explicabo, necessitatibus, velit. Culpa molestiae facilis labore officiis laborum voluptatem natus illum quibusdam eveniet vel a, saepe, id ad voluptate aliquid officia doloremque tempore dolorum accusantium sit at modi ipsa autem rerum? Nihil quisquam sed excepturi exercitationem, facere minima natus voluptatum, quod placeat reiciendis labore iure odit voluptates, temporibus aut. Asperiores, illo aspernatur, delectus perspiciatis neque minima rerum odio labore non, nulla ratione, maxime tenetur.</div>
+
+    <button onclick="findString();">&nbsp;&nbsp;&nbsp;COUNT&nbsp;&nbsp;&nbsp;</button>
+
+    <script>
+        function findString() {
+            do {
+                var userInput = prompt("Введите слово:");
+            } while (userInput !== null && userInput.length < 1);
+
+            if(userInput){
+                var pattern = new RegExp(userInput, "g");
+                var text = $("#src-text").text();
+
+                var res = getStrPositions(pattern, text);
+                $("#src-text").html(markStrPos(text, userInput, res));
+            }
+        }
+
+        function getStrPositions(re, str) {
+            var result = [], match;
+            while ((match = re.exec(str)) != null) {
+                result.push(match.index);
+            }
+            return result;
+        }
+
+        function markStrPos(txt, str, arrPos, className) {
+            var nstr="";
+            var strBefore = strBefore || "<span class='markedText'>";
+            var strAfter = strAfter  || "</span>";
+
+            for (var i = 0; i < arrPos.length; i++) {
+                console.log(nstr)
+                console.log(txt.substr(arrPos[i],arrPos[i])+strBefore+str+strAfter)
+                nstr=nstr+txt.substring(arrPos[i])+strBefore+str+strAfter;
+            }
+
+            if(arrPos[i-1]<txt.length){
+                nstr=nstr+txt.substring(arrPos[i-1]+str.length);
+            }
+            return nstr;
+        }
+    </script>
+</body>
+
+</html>

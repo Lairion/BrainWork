@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+   <div id=div_try_catch></div>
+   <script>
+    try {
+        var a = prompt("Enter digit between 5-10:");
+        var e = new Error();
+        if (a<=5 || a>=10){
+            throw e;
+        }
+    }
+
+    catch(e) {
+        b = e.name + " " +e.message
+        }
+    finally{
+        c = "Pain"
+    }
+
+
+    console.log(b)
+    console.log(c)
+
+
+    </script>
+
+</body>
+</html>
