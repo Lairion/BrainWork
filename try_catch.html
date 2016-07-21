@@ -7,18 +7,24 @@
 <body>
    <div id=div_try_catch></div>
    <script>
+    // Эта конструкция отвечает за проверку прежде чем выполнять программу.
     try {
+        // Условие
         var a = prompt("Enter digit between 5-10:");
-        var e = new Error();
+        // Присваем переменной e обьект Error
+        var e = new Error('You write wrong number.');
         if (a<=5 || a>=10){
+            // Отправляем переменную e в качестве атрибута для catch  и выполняет catch
             throw e;
         }
     }
 
     catch(e) {
+        // присваеваем переменной b строку собранную из свойств обьекта e
         b = e.name + " " +e.message
         }
     finally{
+//        Выпоняем даже если был вызван catch
         c = "Pain"
     }
 
