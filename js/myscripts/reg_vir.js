@@ -1,26 +1,20 @@
 
 $(document).ready(function(){
-    function message_error(num){
-        $("#output").text("Incorrect."+num.toString());
+    function message_error(){
+        $("#output").text("Incorrect.";
         return true;
     }
 
     $("#but_send").click(function(){
-        var regCon = /([+-*/])/
-        var str = $("#inp-num").val();
-        var regNum =/\d/g;
-        if (str){
-            var resnum = str.match(regNum);
-            var resCon = str.match(regCon)
-            if ((regNum.length == 2)&&(regCon.length==1)){
-                regCon
-            }
+        var word = $("#inp_word").val();
+        if (word){
+            var reg_word = new RegExp("/"+word"/");
         }
         else{
-
+            message_error()
         }
 
-    })
+    });
 
 
-})
+});
